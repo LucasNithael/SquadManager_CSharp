@@ -9,9 +9,9 @@
 <section>
     <h1>Autenticação</h1>
 
-    <form>
-        <input type="text" name="email" value="" placeholder="Username/e-mail" />
-        <input type="password" name="password" placeholder="Password" />
+    <form action="/Login/Teste" method="post">
+        <input type="text" name="email" value="@Model.Email" placeholder="Username/e-mail" />
+        <input type="password" name="password" placeholder="Password" value="@Model.Password"/>
 
         <a href="#">Esqueceu a senha?</a>
 
