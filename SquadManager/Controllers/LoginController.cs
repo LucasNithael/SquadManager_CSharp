@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using SquadManager.Models;
+using SquadManager.Validator;
 
 namespace SquadManager.Controllers
 {
@@ -8,6 +10,21 @@ namespace SquadManager.Controllers
         public IActionResult Index()
         {
             UserViewModel user = new UserViewModel();
+
+            user.Email = "lucasnithael32@gmail.com";
+
+            UserValidator validator = new UserValidator();
+
+            ValidationResult results = validator.Validate(user);
+
+            if(!results.IsValid)
+            {
+                foreach(var item in results.Errors)
+                {
+                    Console.WriteLine(item.ErrorMessage);
+                }
+            }
+
             return View("Index", user);
         }
         [HttpPost]
